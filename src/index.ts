@@ -13,6 +13,9 @@ const FUNCTIONS_DIRNAME = 'functions';
 const files = fs.readdirSync(FUNCTIONS_DIRNAME); // cwd of process
 for (const file of files) {
   const filenameNoExtension = path.parse(file).name;
+  if (filenameNoExtension === '.gitignore') {
+    continue;
+  }
 
   const relativePathToIndex = path.join('../', FUNCTIONS_DIRNAME, filenameNoExtension); // index is one directory down from functions
   const userDefinedModule = require(relativePathToIndex);
