@@ -1,16 +1,14 @@
 {
-  "name": "@expo/auth-redirect",
+  "name": "cloud-functions-entry-point",
   "private": true,
   "version": "1.0.0",
-  "description": "A Cloud Function to redirect authentication requests to third-party authentication services",
+  "description": "test",
   "author": "Expo",
   "license": "UNLICENSED",
   "main": "build/index.js",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf build",
-    "deploy-production": "scripts/deploy.sh -e production",
-    "deploy-staging": "scripts/deploy.sh -e staging",
     "dev": "scripts/develop.sh",
     "lint": "eslint src",
     "start": "functions-framework --target default --port 3031",
