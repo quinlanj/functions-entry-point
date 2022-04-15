@@ -19,11 +19,16 @@ for (const file of files) {
         continue;
     }
     const relativePathToIndex = path_1.default.join('../', FUNCTIONS_DIRNAME, filenameNoExtension); // index is one directory down from functions
-    const userDefinedModule = require(relativePathToIndex);
-    // Mount at route '/functions/moduleName'
-    const mountedPath = path_1.default.join('/', FUNCTIONS_DIRNAME, filenameNoExtension).toString();
-    app.use(mountedPath, userDefinedModule.default);
-    console.log('Function mounted at:', mountedPath);
+    try {
+        const userDefinedModule = require(relativePathToIndex);
+        // Mount at route '/functions/moduleName'
+        const mountedPath = path_1.default.join('/', FUNCTIONS_DIRNAME, filenameNoExtension).toString();
+        app.use(mountedPath, userDefinedModule.default);
+        console.log('Function mounted at:', mountedPath);
+    }
+    catch (e) {
+        console.error(`Error mounting function ${filenameNoExtension}`, e);
+    }
 }
 // Set our GCF handler to our Express app.
 exports.default = app;
